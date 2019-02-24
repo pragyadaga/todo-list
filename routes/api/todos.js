@@ -44,12 +44,38 @@ router.get("/", passport.authenticate('jwt', { session: false }), function(req, 
 
   Todo.findAll({
     where: { userId: req.user.id },
-    attributes: ['title', 'completed']
+    attributes: ['id', 'title', 'completed']
   }).then(function(all_todos) {
-    response_todos =
     res.json({todos: all_todos});
   }).catch(
     err => res.status(500).json({error: 'Error in fetching all the todos of the user'})
+  );
+});
+
+router.post("/:id/complete", passport.authenticate('jwt', { session: false }), function(req, res) {
+  console.log('user', req.user.firstName);
+  console.log('user.id', req.user.id);
+
+  Todo.update(
+    { completed: true},
+    { where: { id: req.params.id }}
+  ).then(function(all_todos) {
+    res.json({msg: 'Successfully marked Todo as complete'});
+  }).catch(
+    err => res.status(500).json({error: 'Error in marking todo as complete'})
+  );
+});
+
+router.delete("/:id", passport.authenticate('jwt', { session: false }), function(req, res) {
+  console.log('user', req.user.firstName);
+  console.log('user.id', req.user.id);
+
+  Todo.destroy(
+    { where: { id: req.params.id }}
+  ).then(function(all_todos) {
+    res.json({msg: 'Successfully deleted Todo'});
+  }).catch(
+    err => res.status(500).json({error: 'Error in deleting todo'})
   );
 });
 
