@@ -43,6 +43,11 @@ This app is using JWT to maintain session and allow multiple users to login at t
     $ cd todo-list/
     $ sequelize db:migrate
     ```
+    In case if the above command is failing, do - 
+    ```sh
+    $ npm install -g sequelize-cli
+    ```
+    and then try to run `sequelize db:migrate` command again
 7. Install frontend node modules
     ```sh
     $ cd client/
