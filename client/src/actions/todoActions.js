@@ -4,7 +4,8 @@ import {
   GET_ERRORS,
   SET_TODO_LIST,
   ADD_TODO_ITEM,
-  COMPLETE_TODO_ITEM
+  TOGGLE_TODO_ITEM,
+  DELETE_TODO_ITEM
 } from "./types";
 
 // Get todo List
@@ -30,8 +31,9 @@ export const addTodo = (item) => dispatch => {
       .post("/api/todos/new", item)
       .then(res => {
           console.log("TODO ACTION - addTodoItem")
-          console.log(res);
-          dispatch(addTodoItem(item));
+          console.log(res.data.id);
+          const newItemWithId = {...item, id: res.data.id, completed: false}
+          dispatch(addTodoItem(newItemWithId));
       }) // call to add item to todo list
       .catch(err =>
         dispatch({
@@ -58,14 +60,15 @@ export const addTodoItem = item => {
   };
 
 // complete todoitem
-export const completeTodo = (item) => dispatch => {
+export const toggleTodo = (item) => dispatch => {
+    const togglePath =   item.completed ? "complete" : "incomplete"
     axios
-      .post("/api/todos/"+ item.id + "complete")
+      .post("/api/todos/"+ item.id + "/" + togglePath)
       .then(res => {
-          console.log("TODO ACTION - completeTodo")
+          console.log("TODO ACTION - toggleTodo")
           console.log(res);
-          dispatch(completeTodoItem(item));
-      }) // call to add item to todo list
+          dispatch(toggleTodoItem(item));
+      }) // call to complete/uncomplete item to todo list
       .catch(err =>
         dispatch({
           type: GET_ERRORS,
@@ -75,11 +78,34 @@ export const completeTodo = (item) => dispatch => {
   };
 
 
-export const completeTodoItem = item => {
+export const toggleTodoItem = item => {
     return {
-      type: COMPLETE_TODO_ITEM,
+      type: TOGGLE_TODO_ITEM,
       payload: item
     };
   };
 
 // delete todoitem
+export const deleteTodo = (itemId) => dispatch => {
+  axios
+    .delete("/api/todos/"+ itemId)
+    .then(res => {
+        console.log("TODO ACTION - deleteTodo")
+        console.log(res);
+        dispatch(deleteTodoItem(itemId));
+    }) // call to delete item from todo list
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+
+export const deleteTodoItem = item => {
+  return {
+    type: DELETE_TODO_ITEM,
+    payload: item
+  };
+};

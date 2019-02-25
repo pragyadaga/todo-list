@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddItem = props => (
     <div>
-        <div className="input-field col s12">
+        <div className="input-field col">
             <input
                 onChange={props.onChange}
                 value={props.value}
@@ -13,15 +13,14 @@ const AddItem = props => (
         </div>
         <button
             style={{
-            width: "150px",
             borderRadius: "3px",
             letterSpacing: "1.5px",
-            marginTop: "1rem"
+            marginTop: "10px"
         }}
             onClick={props.onAddTodoClick}
             className="btn btn-large waves-effect waves-light hoverable blue accent-3"
         >
-            Add New Todo Item
+            Add New ToDo Item
         </button>
     </div>
 );

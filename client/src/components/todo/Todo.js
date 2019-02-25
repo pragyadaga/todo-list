@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { listTodos, addTodo } from "../../actions/todoActions";
+import { listTodos, addTodo, deleteTodo, toggleTodo } from "../../actions/todoActions";
 import List from "./List.js";
 import AddItem from "./AddItem.js";
 
@@ -35,8 +35,17 @@ class Todo extends Component {
 
   onAddTodoClick = e => {
     e.preventDefault();
-    this.props.addTodo({title:this.state.newItemTitle, completed: false});
+    this.props.addTodo({title:this.state.newItemTitle});
     this.setState({ newItemTitle: ""});
+  };
+
+  onRemoveTodoClick = (item) => {
+    // e.preventDefault();
+    this.props.deleteTodo(item.id);
+  };
+
+  onToggleTodoClick = (item) => {
+    this.props.toggleTodo(item);
   };
 
   render() {
@@ -47,13 +56,21 @@ class Todo extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Hey there!</b> {user.firstName}
+              <b>Hey there!</b> {user.firstName} {user.lastName}
               <p className="flow-text grey-text text-darken-1">
                 Here is your {" "}
                 <span style={{ fontFamily: "monospace" }}>TODO</span> list
               </p>
-              <List items={this.state.items} />
-              <AddItem onChange={this.onChange} onAddTodoClick={this.onAddTodoClick} value={this.state.newItemTitle}/>
+              <List
+              items={this.state.items}
+              onRemoveTodoClick={this.onRemoveTodoClick}
+              onToggleTodoClick={this.onToggleTodoClick}
+              />
+              <AddItem
+              onChange={this.onChange}
+              onAddTodoClick={this.onAddTodoClick}
+              value={this.state.newItemTitle}
+              />
             </h4>
             <button
               style={{
@@ -77,6 +94,8 @@ class Todo extends Component {
 Todo.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  toggleTodo: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   todo: PropTypes.array.isRequired,
   listTodos: PropTypes.func.isRequired
@@ -89,5 +108,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser,  listTodos, addTodo }
+  { logoutUser,  listTodos, addTodo, deleteTodo, toggleTodo }
 )(Todo);

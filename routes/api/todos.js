@@ -28,7 +28,7 @@ router.post("/new", passport.authenticate('jwt', { session: false }), function(r
     title: req.body.title,
     userId: req.user.id,
   }).then(
-    todo => res.json({msg: 'Todo created successfully'})
+    todo => res.json({msg: 'Todo created successfully', id: todo.id})
   ).catch(
     err => res.status(500).json({ error: err })
   );
@@ -63,6 +63,20 @@ router.post("/:id/complete", passport.authenticate('jwt', { session: false }), f
     res.json({msg: 'Successfully marked Todo as complete'});
   }).catch(
     err => res.status(500).json({error: 'Error in marking todo as complete'})
+  );
+});
+
+router.post("/:id/incomplete", passport.authenticate('jwt', { session: false }), function(req, res) {
+  console.log('user', req.user.firstName);
+  console.log('user.id', req.user.id);
+
+  Todo.update(
+    { completed: false},
+    { where: { id: req.params.id }}
+  ).then(function(all_todos) {
+    res.json({msg: 'Successfully marked Todo as uncomplete'});
+  }).catch(
+    err => res.status(500).json({error: 'Error in marking todo as in-complete'})
   );
 });
 

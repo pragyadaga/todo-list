@@ -92,6 +92,30 @@ The Todo list is available on http://localhost:3000/
       -H 'Postman-Token: 760f7d6b-8e4c-4b70-b917-ed587b29c5c3' \
       -H 'cache-control: no-cache'
     ```
+5. Deleting a Todo item
+    ```sh
+    curl -X DELETE \
+      http://localhost:5000/api/todos/:id \
+      -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTUxMDA0NTQ0LCJleHAiOjE1ODI1NjE0NzB9.j-EUKG5YJ2YP2eaDponjifltbTv48l7T_ZZfHrt-P9c' \
+      -H 'Postman-Token: 760f7d6b-8e4c-4b70-b917-ed587b29c5c3' \
+      -H 'cache-control: no-cache'
+    ```
+6. Marking a Todo item as complete
+    ```sh
+    curl -X POST \
+      http://localhost:5000/api/todos/:id/complete \
+      -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTUxMDA0NTQ0LCJleHAiOjE1ODI1NjE0NzB9.j-EUKG5YJ2YP2eaDponjifltbTv48l7T_ZZfHrt-P9c' \
+      -H 'Postman-Token: 760f7d6b-8e4c-4b70-b917-ed587b29c5c3' \
+      -H 'cache-control: no-cache'
+    ```
+7. Marking a Todo item as incomplete
+    ```sh
+    curl -X POST \
+      http://localhost:5000/api/todos/:id/incomplete \
+      -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTUxMDA0NTQ0LCJleHAiOjE1ODI1NjE0NzB9.j-EUKG5YJ2YP2eaDponjifltbTv48l7T_ZZfHrt-P9c' \
+      -H 'Postman-Token: 760f7d6b-8e4c-4b70-b917-ed587b29c5c3' \
+      -H 'cache-control: no-cache'
+    ```
 
 ### Future Considerations
 
@@ -100,6 +124,7 @@ The Todo list is available on http://localhost:3000/
 3. Add features to the todo app:
     1. Ability to flag certain items
     2. Reorder the items present in the todo list
+    3. Filter by completed items vs show only incomplete items
 
 ### Author ###
 ##### [Pragya Daga](https://github.com/pragyadaga)

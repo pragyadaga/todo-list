@@ -1,7 +1,7 @@
 import {
     SET_TODO_LIST,
     ADD_TODO_ITEM,
-    COMPLETE_TODO_ITEM,
+    TOGGLE_TODO_ITEM,
     DELETE_TODO_ITEM
   } from "../actions/types";
 
@@ -17,14 +17,27 @@ import {
         console.log("TODO REDUCER - ADD_TODO_ITEM")
         console.log(action.payload)
         return [...state, action.payload];
-      case COMPLETE_TODO_ITEM:
-        console.log("TODO REDUCER - COMPLETE_TODO_ITEM")
+      case TOGGLE_TODO_ITEM:
+        console.log("TODO REDUCER - TOGGLE_TODO_ITEM")
         console.log(action.payload)
-        return [...state, action.payload];
+        var oldState = state;
+        var idToUpdate = action.payload.id
+        var updatedState = oldState.map((item) => {
+          if (item.id !== idToUpdate) {
+            return item;
+          }
+          else {
+            return action.payload;
+          }
+        })
+        return [...updatedState];
       case DELETE_TODO_ITEM:
         console.log("TODO REDUCER - DELETE_TODO_ITEM")
         console.log(action.payload)
-        return [...state, action.payload];
+        var oldState = state;
+        var idToDelete = action.payload
+        var updatedState = oldState.filter(item => item.id !== idToDelete)
+        return [...updatedState];
       default:
         return state;
     }

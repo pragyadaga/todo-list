@@ -1,66 +1,26 @@
-import React, { Component } from 'react';
-import { completeTodo } from "../../actions/todoActions";
-
-class TodoItem extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "",
-      completed: false
-    };
-  }
-
-  onChange = e => {
-    this.setState({ [e.target.id]: e.target.value });
-  };
-
-  onClickComplete = e => {
-    e.preventDefault();
-    const item = this.props.item
-
-    // this.props.completeTodo(item);
-
-    console.log(item);
-  };
-
-  onClickRemove = e => {
-    e.preventDefault();
-    const itemData = {
-      id: this.props.item.id,
-    };
-
-    console.log(itemData)
-  };
-
-  render() {
-    const item = this.props.item
-    var checked = "check_box_outline_blank"
-
-    if(item.completed) {
-      checked = "check_box"
-    }
-
-    return(
-      <div>
-        <button className="col s12 m4 l2 circle waves-effect waves-light hoverable white accent-3 no-border"
-          onClick={this.onClickComplete}>
-            <i className="material-icons">{checked}</i>
-        </button>
-        <span className="title">{item.title}</span>
-        <button className="secondary-content"
-          onClick={this.onClickRemove}>
-          <i className="material-icons">close</i></button>
-      </div>
-    );
-  }
-}
+import React from 'react';
+import TodoItem from "./TodoItem.js";
 
 const List = props => (
+  props.items && props.items.length > 0
+  ?
   <ul className="collection">
     {
-      props.items.map((item, index) => <li className="collection-item avatar" key={index}><TodoItem item={item} /></li>)
+      props.items.map((item, index) => {
+        return <li className="collection-item avatar" key={index} style={{margin:2}}>
+          <TodoItem
+          item={item}
+          onRemoveTodoClick={props.onRemoveTodoClick}
+          onToggleTodoClick={props.onToggleTodoClick}
+          />
+        </li>
+      })
     }
   </ul>
+  :
+  <p className="flow-text grey-text text-darken-1">
+  There are no items in your <span style={{ fontFamily: "monospace" }}>TODO</span> list. Add one Now!
+  </p>
 );
 
 export default List;
