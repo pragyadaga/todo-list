@@ -1,6 +1,6 @@
 # TODO APP
 
-Watch the APP Demo [here](https://drive.google.com/file/d/1Ev76A-gLyE8aN34xB0TiHmX-gBnpexS0/view?usp=sharing)
+Watch the APP Demo Video [here](https://drive.google.com/file/d/1Ev76A-gLyE8aN34xB0TiHmX-gBnpexS0/view?usp=sharing)
 
 Build and Rethink your priorities and task with a simple ToDo List and accomplish great things.
 
@@ -59,6 +59,8 @@ This app is using JWT to maintain session and allow multiple users to login at t
     ```
 
 The Todo list is available on http://localhost:3000/
+
+You can go ahead, register a user for yourself and start creating your todo-list
 
 ### API Reference
 
@@ -129,9 +131,11 @@ The Todo list is available on http://localhost:3000/
 1. Deploy the app on some cloud service eg. Heroku
 2. Dockerize the application so that build/deployment cycle is easier and can be easily ported from one machine to another
 3. Add features to the todo app:
-    1. Ability to flag certain items
-    2. Reorder the items present in the todo list
-    3. Filter by completed items vs show only incomplete items
+    1. Add test cases - unit and integration test cases
+    2. Ability to flag certain items
+    3. Reorder the items present in the todo list
+    4. Filter by completed items vs show only incomplete items
+    5. Ability to create different kinds of todo-list like work-list, personal-list
 
 ### Author ###
 ##### [Pragya Daga](https://github.com/pragyadaga)
