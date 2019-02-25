@@ -1,10 +1,8 @@
 # TODO APP
 
+Watch the APP Demo [here](https://drive.google.com/file/d/1Ev76A-gLyE8aN34xB0TiHmX-gBnpexS0/view?usp=sharing)
+
 Build and Rethink your priorities and task with a simple ToDo List and accomplish great things.
-
-### DEMO
-
-Watch the App Demo at this [link](https://drive.google.com/file/d/1Ev76A-gLyE8aN34xB0TiHmX-gBnpexS0/view?usp=sharing)
 
 ### Tech
 
