@@ -2,6 +2,10 @@
 
 Build and Rethink your priorities and task with a simple ToDo List and accomplish great things.
 
+### DEMO
+
+Watch the App Demo at this [link](https://drive.google.com/file/d/1Ev76A-gLyE8aN34xB0TiHmX-gBnpexS0/view?usp=sharing)
+
 ### Tech
 
 This app has been built using the following technologies:
