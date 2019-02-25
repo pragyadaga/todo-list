@@ -56,7 +56,7 @@ class Todo extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Hey there!</b> {user.firstName} {user.lastName}
+              <b>Hey there,</b> {user.firstName}
               <p className="flow-text grey-text text-darken-1">
                 Here is your {" "}
                 <span style={{ fontFamily: "monospace" }}>TODO</span> list
