@@ -39,7 +39,7 @@ class TodoItem extends Component {
 
       if(item.completed) {
         checked = "check_box"
-        title_style = {fontSize:25,verticalAlign:"sub","text-decoration":"line-through"}
+        title_style = {fontSize:25,verticalAlign:"sub",textDecoration:"line-through"}
       }
 
 
