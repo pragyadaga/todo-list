@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+    db:
+      container_name: db
+      image: mysql
+      # command: --default-authentication-plugin=mysql_native_password
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: todo_list
+      healthcheck:
+        test: "exit 0"
+      networks:
+        - app_network
+    web_app:
+      build: .
+      depends_on:
+        - db
+      entrypoint:
+          - ./docker-entrypoint.sh
+      ports:
+          - "3000:3000"
+      expose:
+          - "3000"
+      environment:
+          - NODE_ENV=docker
+      networks:
+          - app_network
+
+networks:
+  app_network:
+    driver: bridge

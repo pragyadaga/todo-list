@@ -16,8 +16,16 @@ app.use(
 
 app.use(bodyParser.json());
 
+var config = {}
+
+console.log("PROCESS ENV IS ", process.env.NODE_ENV);
 // DB Config
-const sequelize = new Sequelize(require("./config/config").development);
+if(process.env.DB_ENV == 'docker')
+  config = require("./config/config").docker;
+else
+  config = require("./config/config").development;
+
+const sequelize = new Sequelize(config);
 
 // Connect to MySQL
 sequelize
@@ -37,4 +45,4 @@ app.use("/api/todos", todos);
 
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if sd choose to deploy the app there
 
-app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+app.listen(port, () => console.log(`Server up and running!`));
