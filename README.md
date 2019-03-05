@@ -16,7 +16,27 @@ This app has been built using the following technologies:
 
 This app is using JWT to maintain session and allow multiple users to login at the same time.
 
-### Build / Deploy Application
+### Build Application with Docker
+##### Prerequisites
+ Install Docker on your system
+
+1. Ensure you have `docker` and `docker-compose` installed. You can install it from [here](https://docs.docker.com/docker-for-mac)
+2. git clone https://github.com/pragyadaga/todo-list
+3. `cd /todo-list`
+4. Build the Dockers
+    ```sh
+    $ docker-compose build
+    ```
+4. Get the system to run
+    ```sh
+    $ docker-compose up
+    ```
+
+The Todo list would be available on http://localhost:3000/
+
+You can go ahead, register a user for yourself and start creating your todo-list
+
+### Build Application without Docker
  ##### Prerequisites
  NodeJs, Npm and MySql. Following commands have been tested on MacOS X
 1. git clone https://github.com/pragyadaga/todo-list
@@ -129,8 +149,7 @@ You can go ahead, register a user for yourself and start creating your todo-list
 ### Future Considerations
 
 1. Deploy the app on some cloud service eg. Heroku
-2. Dockerize the application so that build/deployment cycle is easier and can be easily ported from one machine to another
-3. Add features to the todo app:
+2. Add features to the todo app:
     1. Add test cases - unit and integration test cases
     2. Ability to flag certain items
     3. Reorder the items present in the todo list
