@@ -22,7 +22,7 @@ This app is using JWT to maintain session and allow multiple users to login at t
 
 1. Ensure you have `docker` and `docker-compose` installed. You can install it from [here](https://docs.docker.com/docker-for-mac)
 2. git clone https://github.com/pragyadaga/todo-list
-3. `cd /todo-list`
+3. `cd todo-list/`
 4. Build the Dockers
     ```sh
     $ docker-compose build
