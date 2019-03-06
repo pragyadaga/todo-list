@@ -6,11 +6,12 @@ Build and Rethink your priorities and task with a simple ToDo List and accomplis
 
 ### Tech
 
-This app has been built using the following technologies:
+This app is using the following technologies:
 
 * ReactJS
 * NodeJS
 * MySQL
+* Docker
 
 ### Security Consideration
 
@@ -20,7 +21,13 @@ This app is using JWT to maintain session and allow multiple users to login at t
 ##### Prerequisites
  Install Docker on your system
 
-1. Ensure you have `docker` and `docker-compose` installed. You can install it from [here](https://docs.docker.com/docker-for-mac)
+1. Ensure you have `docker` and `docker-compose` installed and the docker service is running. You can install it from [here](https://docs.docker.com/docker-for-mac/install/). You can also install using the following on Mac OS -
+```sh
+$ brew install docker
+$ brew install docker-compose
+$ start the docker app
+```
+
 2. git clone https://github.com/pragyadaga/todo-list
 3. `cd todo-list/`
 4. Build the Dockers
