@@ -19,18 +19,13 @@ This app is using JWT to maintain session and allow multiple users to login at t
 
 ### Build Application with Docker
 ##### Prerequisites
- Install Docker on your system
+ Install Docker on your system. You can install the Docker Desktop so all the dependency are present. 
+ Ensure you have `docker` and `docker-compose` installed and the docker service is running. You can install the Docker Desktop so all the dependency are present from [here](https://docs.docker.com/docker-for-mac/install/).
 
-1. Ensure you have `docker` and `docker-compose` installed and the docker service is running. You can install it from [here](https://docs.docker.com/docker-for-mac/install/). You can also install using the following on Mac OS -
-```sh
-$ brew install docker
-$ brew install docker-compose
-$ start the docker app
-```
-
-2. git clone https://github.com/pragyadaga/todo-list
-3. `cd todo-list/`
-4. Build the Dockers
+#### Build the Application
+1. git clone https://github.com/pragyadaga/todo-list
+2. `cd todo-list/`
+3. Build the Dockers
     ```sh
     $ docker-compose build
     ```
@@ -46,6 +41,7 @@ You can go ahead, register a user for yourself and start creating your todo-list
 ### Build Application without Docker
  ##### Prerequisites
  NodeJs, Npm and MySql. Following commands have been tested on MacOS X
+
 1. git clone https://github.com/pragyadaga/todo-list
 2. Install node modules in root directory (/todo-list):  
     ```sh
