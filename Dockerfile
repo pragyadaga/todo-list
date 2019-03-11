@@ -14,6 +14,9 @@ WORKDIR /app/client
 
 RUN npm install --quiet
 
+# Update apk and install bash
+# RUN apk update && apk add bash
+
 WORKDIR /app
 
 RUN chmod +x docker-entrypoint.sh
